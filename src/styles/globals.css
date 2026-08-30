@@ -1,0 +1,127 @@
+@import "tailwindcss";
+
+/* ============================================
+   DESIGN TOKENS — Restaurant Design System
+   Dark = deep charcoal/espresso + warm ivory + gold
+   Light = warm cream/white + espresso + same gold
+   ============================================ */
+
+:root {
+  /* --- Dark (default) --- */
+  --color-background: 20 16 14;        /* deep charcoal */
+  --color-surface: 30 24 21;           /* dark espresso */
+  --color-surface-raised: 38 31 27;
+  --color-foreground: 245 238 227;     /* warm ivory */
+  --color-muted: 168 156 143;          /* warm grey */
+  --color-muted-foreground: 138 126 114;
+  --color-primary: 196 154 82;         /* muted gold/amber */
+  --color-primary-foreground: 20 16 14;
+  --color-border: 58 49 43;            /* subtle warm neutral */
+  --color-glass: 30 24 21;             /* used with alpha in bg-glass */
+  --glass-alpha: 0.55;
+
+  --font-display: 'Fraunces', 'Playfair Display', ui-serif, Georgia, serif;
+  --font-body: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-script: 'Sacramento', cursive;
+
+  /* Hero scrim — theme-aware. --hero-scrim is the tone used close to the
+     copy (needs to stay dark enough for white text in both themes).
+     --hero-scrim-far is the tone the gradient eases toward further into
+     the photograph: near-black in dark mode (so it reads as one
+     continuous cinematic frame), warm cream in light mode (so the
+     Hero eases into the page's own light background instead of just
+     being a dark photo pasted on a light site). */
+  --hero-scrim: 20 16 14;
+  --hero-scrim-far: 20 16 14;
+
+  --shadow-soft: 0 8px 30px rgb(0 0 0 / 0.35);
+  --shadow-lift: 0 16px 40px rgb(0 0 0 / 0.45);
+
+  color-scheme: dark;
+}
+
+[data-theme="light"] {
+  --color-background: 250 246 238;     /* warm cream */
+  --color-surface: 255 253 249;        /* warm white */
+  --color-surface-raised: 255 255 255;
+  --color-foreground: 43 32 24;        /* espresso */
+  --color-muted: 120 104 90;           /* warm grey/brown */
+  --color-muted-foreground: 96 82 70;
+  --color-primary: 176 128 56;         /* gold/amber, slightly deeper for contrast */
+  --color-primary-foreground: 250 246 238;
+  --color-border: 224 212 196;         /* subtle brown/cream */
+  --color-glass: 255 253 249;
+  --glass-alpha: 0.65;
+
+  /* Warm, muted brown near the copy (still dark enough for white text) —
+     softer than dark mode's near-black — easing into the actual cream
+     page background further into the photo. */
+  --hero-scrim: 46 34 26;
+  --hero-scrim-far: 250 246 238;
+
+  --shadow-soft: 0 8px 30px rgb(0 0 0 / 0.08);
+  --shadow-lift: 0 16px 40px rgb(0 0 0 / 0.12);
+
+  color-scheme: light;
+}
+
+/* Map tokens into Tailwind v4 theme (CSS-first config) */
+@theme inline {
+  --color-background: rgb(var(--color-background));
+  --color-surface: rgb(var(--color-surface));
+  --color-surface-raised: rgb(var(--color-surface-raised));
+  --color-foreground: rgb(var(--color-foreground));
+  --color-muted: rgb(var(--color-muted));
+  --color-muted-foreground: rgb(var(--color-muted-foreground));
+  --color-primary: rgb(var(--color-primary));
+  --color-primary-foreground: rgb(var(--color-primary-foreground));
+  --color-border: rgb(var(--color-border));
+
+  --font-display: var(--font-display);
+  --font-sans: var(--font-body);
+  --font-script: var(--font-script);
+}
+
+@layer base {
+  * {
+    border-color: rgb(var(--color-border));
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: rgb(var(--color-background));
+    color: rgb(var(--color-foreground));
+    font-family: var(--font-body);
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  h1, h2, h3 {
+    font-family: var(--font-display);
+  }
+  ::selection {
+    background-color: rgb(var(--color-primary) / 0.3);
+  }
+
+  /* Focus visibility for accessibility */
+  :focus-visible {
+    outline: 2px solid rgb(var(--color-primary));
+    outline-offset: 2px;
+  }
+}
+
+@layer utilities {
+  .bg-glass {
+    background-color: rgb(var(--color-glass) / var(--glass-alpha));
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
