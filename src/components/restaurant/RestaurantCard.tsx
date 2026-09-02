@@ -5,7 +5,7 @@ import type { Restaurant } from '@/types/restaurant';
 export function RestaurantCard({ restaurant }: { restaurant: Restaurant }) {
   return (
     <Link
-      to="/restaurants"
+      to={`/restaurants/${restaurant.id}`}
       aria-label={`View ${restaurant.name}`}
       className="group flex h-full flex-col overflow-hidden rounded-xl border border-border bg-surface transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-lift focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2"
     >
