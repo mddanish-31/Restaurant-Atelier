@@ -4,7 +4,7 @@ import { Flame } from 'lucide-react';
 import { NAV_LINKS } from '@/data/navigation';
 import { FOOD_CATEGORIES } from '@/data/categories';
 
-const DISCOVER_SLUGS = ['italian', 'indian', 'japanese', 'mexican', 'asian', 'desserts'];
+const DISCOVER_SLUGS = ['italian', 'indian', 'japanese', 'mediterranean', 'asian', 'desserts'];
 
 export function Footer() {
   const prefersReducedMotion = useReducedMotion();
