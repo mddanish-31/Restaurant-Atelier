@@ -20,6 +20,7 @@ export function AppRoutes() {
       <Route path="/cart" element={<Cart />} />
       <Route path="/privacy" element={<ComingSoonPage title="Privacy Policy" />} />
       <Route path="/terms" element={<ComingSoonPage title="Terms & Conditions" />} />
+      <Route path="/events" element={<ComingSoonPage title="Events & Experiences" />} />
     </Routes>
   );
 }
