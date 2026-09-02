@@ -32,12 +32,12 @@ export function FeaturedFoodCard({ item }: { item: FoodItem }) {
         <p className="line-clamp-2 text-sm leading-relaxed text-muted">{item.description}</p>
 
         <div className="mt-auto flex items-center justify-between border-t border-border pt-3">
-          <span className="font-display text-lg text-foreground">${item.price}</span>
-          <span className="flex items-center gap-1 font-sans text-xs font-medium tracking-wide text-muted transition-colors duration-200 group-hover:text-primary">
+          <span className="font-display text-lg font-semibold text-foreground">₹{item.price}</span>
+          <span className="flex items-center gap-1 font-sans text-xs font-semibold tracking-wide text-muted transition-colors duration-200 group-hover:text-primary">
             View dish
             <ArrowUpRight
               size={14}
-              strokeWidth={1.75}
+              strokeWidth={2}
               className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
             />
           </span>
